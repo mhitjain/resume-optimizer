@@ -1,3 +1,0 @@
-# System packages for Streamlit Cloud
-# Note: pdflatex (LaTeX) is NOT available on Streamlit Cloud
-# Users can download the LaTeX file and compile it locally
