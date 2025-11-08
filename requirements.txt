@@ -3,6 +3,7 @@ groq==0.33.0
 python-dotenv==1.2.1
 google-generativeai==0.7.2
 streamlit-cookies-manager==0.2.0
+requests==2.32.3
 
 # Google AI dependencies (required by google-generativeai)
 google-ai-generativelanguage==0.6.6

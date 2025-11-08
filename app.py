@@ -137,15 +137,38 @@ def escape_latex(text):
     return result
 
 @st.cache_data(show_spinner=False)
+def compile_latex_to_pdf_online(latex_content):
+    """Fallback when pdflatex is not available - provides helpful guidance"""
+    
+    add_log('ℹ️ PDF compilation not available without local pdflatex', 'info')
+    
+    st.warning("""
+    📄 **PDF Compilation Not Available**
+    
+    Since pdflatex is not installed locally, PDF generation isn't available.
+    
+    **Easy Solution - Use Overleaf (Free):**
+    1. Download the LaTeX file below (`.tex`)
+    2. Go to [Overleaf.com](https://www.overleaf.com) (free account)
+    3. Click "New Project" → "Upload Project"
+    4. Upload your `.tex` file
+    5. It will compile to PDF automatically!
+    
+    💡 **Bonus**: Overleaf lets you edit and recompile easily in your browser.
+    """)
+    
+    return None
+
+@st.cache_data(show_spinner=False)
 def compile_latex_to_pdf(latex_content):
-    """Compile LaTeX to PDF using pdflatex"""
+    """Compile LaTeX to PDF using pdflatex (local) or online API (cloud)"""
     import subprocess
     import tempfile
     import shutil
     
     add_log('📄 Compiling LaTeX to PDF...', 'info')
     
-    # Check if pdflatex is available
+    # Check if pdflatex is available (local installation)
     pdflatex_paths = [
         '/Library/TeX/texbin/pdflatex',  # MacTeX default
         '/usr/local/texlive/2024/bin/universal-darwin/pdflatex',  # Manual install
@@ -168,35 +191,12 @@ def compile_latex_to_pdf(latex_content):
         except:
             pass
     
+    # If no local pdflatex, show Overleaf instructions
     if not pdflatex_cmd:
-        add_log('❌ pdflatex not found. Install MacTeX from https://www.tug.org/mactex/', 'error')
-        st.error("""
-        ⚠️ **pdflatex not found**
-        
-        To generate PDFs, you need to install LaTeX:
-        
-        **Option 1: MacTeX (Recommended - Full install ~4GB)**
-        ```bash
-        brew install --cask mactex
-        # Then close ALL terminal windows and restart
-        ```
-        
-        **Option 2: BasicTeX (Smaller ~100MB)**
-        ```bash
-        brew install --cask basictex
-        # Then close ALL terminal windows and restart
-        ```
-        
-        After installation:
-        1. Close ALL terminal windows
-        2. Restart your terminal
-        3. Verify: `which pdflatex`
-        4. Restart Streamlit
-        
-        💡 **For now**: You can still download the LaTeX file and compile it elsewhere!
-        """)
-        return None
+        add_log('ℹ️ Local pdflatex not found - use Overleaf for PDF generation', 'info')
+        return compile_latex_to_pdf_online(latex_content)
     
+    # Use local pdflatex if available
     try:
         # Clean the LaTeX content - remove any text before \documentclass
         import re

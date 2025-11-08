@@ -176,8 +176,9 @@ After deployment, users can:
 3. Paste a job description
 4. Get AI-powered optimization suggestions
 5. Download the optimized LaTeX file
+6. Compile to PDF (locally with pdflatex, or upload to Overleaf)
 
-**Note**: PDF generation requires local installation with pdflatex. On Streamlit Cloud, users can download the LaTeX file and compile it locally.
+**Note**: On Streamlit Cloud (no pdflatex), users download the `.tex` file and can easily compile it on [Overleaf.com](https://www.overleaf.com) (free, online LaTeX editor).
 
 ## License
 
