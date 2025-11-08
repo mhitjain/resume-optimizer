@@ -1,0 +1,30 @@
+=== MY BACKGROUND ===
+
+# TekLink Internship (Feb 2025 - Aug 2025)
+- Built FastAPI REST APIs for AML compliance platform
+- Created React/TypeScript frontend components
+- Integrated Azure Data Factory for ETL pipelines
+- Worked with OpenAI API and Pinecone for RAG system
+- Built Streamlit file validation application
+
+Technologies: Python, FastAPI, React, TypeScript, Azure Data Factory, OpenAI API, Pinecone
+
+# Accenture (2021-2023)
+- Java/Spring Boot microservices development
+- Apache Kafka integration
+- React/Node.js full-stack development
+- AWS EC2/S3 optimization
+- Python automation scripts
+
+# Projects
+- AWS Cloud Automation with Terraform
+- Clinical Trial Data Pipeline with RAG
+- Cloud Resource Management System (Oracle SQL + Spring Boot)
+- MERN stack food donation platform
+- Java/Spring Boot car rental system
+
+# Skills
+Backend: FastAPI, Spring Boot, Node.js, Express
+Frontend: React, TypeScript, JavaScript
+Cloud: AWS, Azure, Terraform
+Data: Azure Data Factory, SQL, ETL
